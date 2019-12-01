@@ -12,7 +12,7 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "1": "nodemon ./01/index.ts",
+    "1": "nodemon  ./01/index.ts",
     "1d": "nodemon --inspect-brk ./01/index.ts"
   }
 }
