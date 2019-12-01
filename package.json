@@ -1,0 +1,18 @@
+{
+  "name": "advent-of-code-2019",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:stevenmusumeche/advent-of-code-2019.git",
+  "author": "Steven Musumeche <steven@musumeche.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "nodemon": "^2.0.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "1": "nodemon ./01/index.ts",
+    "1d": "nodemon --inspect-brk ./01/index.ts"
+  }
+}
