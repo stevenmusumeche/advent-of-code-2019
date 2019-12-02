@@ -4,10 +4,9 @@
     {
       "type": "node",
       "request": "attach",
-      "name": "Node: Nodemon",
-      "processId": "${command:PickProcess}",
-      "restart": true,
-      "protocol": "inspector"
+      "name": "Attach to Nodemon",
+      "port": 9229,
+      "restart": true
     }
   ]
 }
