@@ -13,8 +13,10 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "dev": "nodemon  ./$NUM/index.ts",
-    "debug": "nodemon --inspect-brk ./$NUM/index.ts"
+    "dev1": "nodemon  ./$NUM/part1.ts",
+    "dev2": "nodemon  ./$NUM/part2.ts",
+    "debug1": "nodemon --inspect-brk ./$NUM/part1.ts",
+    "debug2": "nodemon --inspect-brk ./$NUM/part2.ts"
   },
   "dependencies": {
     "lodash": "^4.17.15"
