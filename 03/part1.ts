@@ -1,4 +1,5 @@
 import fs from "fs";
+import { withTime } from "../utils";
 
 type Coordinate = { x: number; y: number };
 interface BoardPieceData {
@@ -56,7 +57,7 @@ const testCases = [
   }
 ];
 
-(function main() {
+function main() {
   // REAL INPUT
   const paths = getInput();
   resetBoard();
@@ -84,7 +85,9 @@ const testCases = [
     console.log({ answer, expected });
     console.log("-------------------");
   });
-})();
+}
+
+withTime(main);
 
 function runPath(path: string[], pathIndex: 0 | 1) {
   let coords = [0, 0];
