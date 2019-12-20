@@ -3,8 +3,12 @@ const IMMEDIATE_MODE = "1";
 const RELATIVE_MODE = "2";
 
 let input: string;
+
 type OutputHandler = (output: number) => void;
 let outputHandler: OutputHandler;
+
+type OnInput = () => void;
+let onInput: OnInput = () => {};
 
 export function setInput(i: string) {
   input = i;
@@ -12,6 +16,10 @@ export function setInput(i: string) {
 
 export function setOutputHandler(handler: OutputHandler) {
   outputHandler = handler;
+}
+
+export function setOnInput(handler: OnInput) {
+  onInput = handler;
 }
 
 export function run(memory: string[], ip: number, rb: number): string[] {
@@ -42,6 +50,7 @@ export function run(memory: string[], ip: number, rb: number): string[] {
         break;
       // input
       case "03":
+        onInput();
         destIndex = getIndex(modes[0], memory, ip + 1, rb);
         memory[destIndex] = input;
         ip += 2;
