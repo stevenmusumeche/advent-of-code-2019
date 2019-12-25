@@ -22,9 +22,10 @@ export function setOnInput(handler: OnInput) {
   onInput = handler;
 }
 
-export function run(memory: string[], ip: number, rb: number): string[] {
+export function* run(memory: string[], ip: number, rb: number) {
   while (true) {
     const { opCode, modes, instruction } = parseInstruction(memory[ip]);
+    //console.log("[cpu] running opCode", opCode);
 
     if (opCode === "99") {
       process.stdout.write("\n");
@@ -50,7 +51,11 @@ export function run(memory: string[], ip: number, rb: number): string[] {
         break;
       // input
       case "03":
-        onInput();
+        //onInput();
+        //console.log("[cpu] waiting for input");
+        const input = yield;
+        //console.log("[cpu] received input", input);
+
         destIndex = getIndex(modes[0], memory, ip + 1, rb);
         memory[destIndex] = input;
         ip += 2;
@@ -58,7 +63,11 @@ export function run(memory: string[], ip: number, rb: number): string[] {
       // output
       case "04":
         output = getParameterValue(modes[0], memory, ip + 1, rb);
-        outputHandler(output);
+        //console.log("[cpu] providing output", output);
+
+        yield output;
+
+        //outputHandler(output);
         ip += 2;
         break;
       // jump-if-true
@@ -149,6 +158,7 @@ function getParameterValue(
   rb: number
 ): number {
   const index = getIndex(mode, memory, ip, rb);
+
   if (memory[index] === undefined) {
     memory[index] = "0";
   }
