@@ -112,8 +112,6 @@ export function* run(memory: string[], ip: number, rb: number) {
         throw new Error(`Unknown OP Code ${opCode} at position ${ip}`);
     }
   }
-
-  return memory;
 }
 
 interface Instruction {
